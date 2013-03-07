@@ -72,17 +72,17 @@ STATICFILES_DIRS = (
 # Don't forget to use absolute paths, not relative paths.
 )
 
-# Django pipeline settings
-PIPELINE = True
-STATICFILES_STORAGE = 'quizz.amazons3.CloudfrontCachedPipelineStaticStorage'
-DEFAULT_FILE_STORAGE = 'quizz.amazons3.CloudfrontMediaStorage'
-
-DEFAULT_S3_PATH = "media"
-STATIC_S3_PATH = "static"
-AWS_STORAGE_BUCKET_NAME = 'next-pope'
-AWS_BUCKET_URL = '//{0}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
-
 if not DEBUG:
+    # Django pipeline settings
+    PIPELINE = True
+    STATICFILES_STORAGE = 'quizz.amazons3.CloudfrontCachedPipelineStaticStorage'
+    DEFAULT_FILE_STORAGE = 'quizz.amazons3.CloudfrontMediaStorage'
+
+    DEFAULT_S3_PATH = "media"
+    STATIC_S3_PATH = "static"
+    AWS_STORAGE_BUCKET_NAME = 'next-pope'
+    AWS_BUCKET_URL = '//{0}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
+
     STATIC_URL = AWS_BUCKET_URL + '/%s/' % STATIC_S3_PATH
     MEDIA_URL = AWS_BUCKET_URL + '/%s/' % DEFAULT_S3_PATH
 else:
