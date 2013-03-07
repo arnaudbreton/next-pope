@@ -145,7 +145,10 @@ define('quizzForm',
 
             this.tryAgain = function () {
                 this.select('results').hide();
+                this.select('containerCelibate').hide();
+                this.select('containerMan').show();
                 this.select('container').show();
+
             }
         }
     });
