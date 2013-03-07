@@ -20,7 +20,7 @@ define('quizzForm',
         function quizzForm() {
             this.defaultAttrs({
                 overlay: $('#overlay'),
-                container: '.form',
+                container: '#form-container',
                 containerMan: '#container_man',
                 containerCatholic: '#container_catholic',
                 containerMarried: '#container_married',
@@ -145,7 +145,7 @@ define('quizzForm',
 
             this.tryAgain = function () {
                 this.select('results').hide();
-                this.select('containerMan').show();
+                this.select('container').show();
             }
         }
     });
