@@ -1,0 +1,8 @@
+*.pyc
+*.sql
+*.log*
+.DS_Store
+.idea/
+quizz/static/.sass-cache
+.pydevproject
+.settings/*

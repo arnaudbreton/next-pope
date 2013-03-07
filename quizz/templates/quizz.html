@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block js %}
+    <script src="{% static "js/components/requirejs/require.js" %}" data-main="{% static "js/main_modules/quizz_form.js" %}"></script>
+{% endblock %}
+
+{% block css %}
+    <link href="{% static "css/common_form.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div id="container" class="sign-in">
+        <input id="form_is_bound" type="hidden" value="{{ form.is_bound }}">
+
+        <div id="alert-error" class="alert alert-error hide" style="width: 470px;margin-left: auto;margin-right: auto;text-align:center;">
+            Something went wrong while updating your profile : <span id="alert-text"></span>, <a onclick="backToClassTitle();">please try again</a>
+        </div>
+
+        <form action="" class="hide" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </form>
+
+        <h2 id="title" class="introducing_text">Can you be the next pope?</h2>
+        <div class="form">
+            <div id="container_man" class="form hide">
+                <div class="form_wrap">
+                    <h2>Are you a man?</h2>
+
+                    <div class="form_text" data-value="true">
+                        <a>
+                            <p>Yes</p>
+                        </a>
+                    </div>
+                    <div class="form_text or">
+                        <p>
+                            or
+                        </p>
+                    </div>
+                    <div class="form_text" data-value="false">
+                        <a>
+                            <p>No</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="container_catholic" class="form hide">
+                <div class="form_wrap">
+                    <h2 style="margin-top: -20px;">Are you a catholic?</h2>
+                    <div class="form_text" data-value="true">
+                        <a>
+                            <p>Yes</p>
+                        </a>
+                    </div>
+
+                    <div class="form_text or">
+                        <p>
+                            or
+                        </p>
+                    </div>
+
+                    <div class="form_text" data-value="false">
+                        <a>
+                            <p>No</p>
+                        </a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <button type="button" class="btn btn-medium btn-primary prev_button">Prev</button>
+                </div>
+            </div>
+
+            <div id="container_married" class="form hide">
+                <div class="form_wrap">
+                    <h2 style="margin-top: -20px;">Are you married?</h2>
+                    <div class="form_text" data-value="true">
+                        <a>
+                            <p>Yes</p>
+                        </a>
+                    </div>
+
+                    <div class="form_text or">
+                        <p >
+                            or
+                        </p>
+                    </div>
+
+                    <div class="form_text" data-value="false">
+                        <a>
+                            <p>No</p>
+                        </a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <button type="button" class="btn btn-primary prev_button">Prev</button>
+                </div>
+            </div>
+
+            <div id="container_celibate" class="form hide">
+                <div class="form_wrap">
+                    <h2 style="margin-top: -20px;">
+                        Are you ready to stay celibate?
+                    </h2>
+                    <div class="form_text" data-value="true">
+                        <a>
+                            <p>Yes</p>
+                        </a>
+                    </div>
+
+                    <div class="form_text or">
+                        <p>
+                            or
+                        </p>
+                    </div>
+
+                    <div class="form_text" data-value="false">
+                        <a>
+                            <p>No</p>
+                        </a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <button type="button" class="btn btn-primary prev_button">Prev</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="results" class="hide">
+            <h2 class="introducing_text"></h2>
+            <div id="social_panel">
+                <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-send="false"
+                     data-layout="box_count" data-width="60" data-show-faces="true"></div>
+                <div style="height:10px"></div>
+
+                <a href="https://twitter.com/share" data-count="vertical" class="twitter-share-button"
+                   data-url="{{ request.build_absolute_uri }}" data-hashtags="nextpope" data-lang="en"
+                   data-text="Are you the next pope?">Tweeter</a>
+                <div style="height:10px"></div>
+                <div class="g-plusone" data-size="tall"
+                     data-href="{{ request.build_absolute_uri }}"></div>
+            </div>
+            <a class="try-again"><h3>Try again</h3></a>
+        </div>
+
+        <div><h2 class="introducing_text"></h2>By <a href="https://twitter.com/arnaud_breton">@arnaud_breton</a></h2></div>
+    </div>
+{% endblock %}
